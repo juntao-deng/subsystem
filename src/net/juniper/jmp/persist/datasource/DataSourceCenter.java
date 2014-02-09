@@ -98,7 +98,7 @@ public class DataSourceCenter {
         String typeStr = dpn.toUpperCase();
         if (typeStr.indexOf(DBConsts.DB2_NAME) != -1)
             return DBConsts.DB2;
-        if (typeStr.equals(DBConsts.MSSQL_NAME))
+        if (typeStr.equals(DBConsts.MYSQL_NAME))
         	return DBConsts.MYSQL;
         if (typeStr.indexOf(DBConsts.ORACLE_NAME) != -1)
             return DBConsts.ORACLE;

@@ -18,7 +18,7 @@ public interface DBConsts {
 
 	public final static String ORACLE_NAME = "ORACLE";
 	public final static String SQLSERVER_NAME = "SQLSERVER";
-	public final static String MSSQL_NAME = "MSSQL";
+	public final static String MYSQL_NAME = "MYSQL";
 	public final static String DB2_NAME = "DB2";
 	public final static String HSQL_NAME = "HSQL";
 	public final static String SYBASE_NAME = "SYBASE";

@@ -12,7 +12,7 @@ import net.juniper.jmp.persist.exp.JmpDbRuntimeException;
 public class JNDIDatasourceProvider implements DataSourceProvider {
 	private Logger logger = Logger.getLogger(JNDIDatasourceProvider.class);
 	private Context context;
-	private static final String DS_PRE = "java:comp/env/jdbc/";
+	private static final String DS_PRE = "java:jboss/jdbc/";
 	@Override
 	public DataSource getDataSource(String name) {
 		try{
