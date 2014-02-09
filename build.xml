@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="subsystem">
+    <property environment="env"/>
+    <property name="wtfbase.location" value="../wtfbase"/>
+    <property name="wtfbaseEJB.location" value="../wtfbaseEJB"/>
+    <property name="wtfdocui.location" value="../wtfprojs/wtfdocui"/>
+    <property name="wtfdocuiEJB.location" value="../wtfprojs/wtfdocuiEJB"/>
+    <property name="ECLIPSE_HOME" value="../../eclipse"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="modules-javax.inject.api.userclasspath">
+        <pathelement location="../../../3rdParty/jboss/modules/javax/inject/api/main/javax.inject-1.jar"/>
+    </path>
+    <path id="modules-javax.interceptor.api.userclasspath">
+        <pathelement location="../../../3rdParty/jboss/modules/javax/interceptor/api/main/jboss-interceptors-api_1.1_spec-1.0.1.Final.jar"/>
+    </path>
+    <path id="modules-javax.servlet.api.userclasspath">
+        <pathelement location="../../../3rdParty/jboss/modules/javax/servlet/api/main/jboss-servlet-api_3.0_spec-1.0.2.Final.jar"/>
+    </path>
+    <path id="modules-javax.ws.rs.api.userclasspath">
+        <pathelement location="../../../3rdParty/jboss/modules/javax/ws/rs/api/main/jboss-jaxrs-api_1.1_spec-1.0.1.Final.jar"/>
+    </path>
+    <path id="modules-org.apache.commons.beanutils.userclasspath">
+        <pathelement location="../../../3rdParty/jboss/modules/org/apache/commons/beanutils/main/commons-beanutils-1.8.3.jar"/>
+    </path>
+    <path id="modules-org.apache.commons.collections.userclasspath">
+        <pathelement location="../../../3rdParty/jboss/modules/org/apache/commons/collections/main/commons-collections-3.2.1.jar"/>
+    </path>
+    <path id="modules-org.apache.commons.io.userclasspath">
+        <pathelement location="../../../3rdParty/jboss/modules/org/apache/commons/io/main/commons-io-2.1.jar"/>
+    </path>
+    <path id="modules-org.apache.commons.lang.userclasspath">
+        <pathelement location="../../../3rdParty/jboss/modules/org/apache/commons/lang/main/commons-lang-2.6.jar"/>
+    </path>
+    <path id="modules-javax.persistence.api.userclasspath">
+        <pathelement location="../../../3rdParty/jboss/modules/javax/persistence/api/main/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+    </path>
+    <path id="modules-javax.transaction.api.userclasspath">
+        <pathelement location="../../../3rdParty/jboss/modules/javax/transaction/api/main/jboss-transaction-api_1.1_spec-1.0.1.Final.jar"/>
+    </path>
+    <path id="modules-org.apache.log4j.userclasspath">
+        <pathelement location="../../../3rdParty/jboss/modules/org/apache/log4j/main/log4j-1.2.16.jar"/>
+    </path>
+    <path id="modules-javax.enterprise.api.userclasspath">
+        <pathelement location="../../../3rdParty/jboss/modules/javax/enterprise/api/main/cdi-api-1.0-SP4.jar"/>
+    </path>
+    <path id="subsystem.classpath">
+        <pathelement location="build/classes"/>
+        <path refid="modules-javax.inject.api.userclasspath"/>
+        <path refid="modules-javax.interceptor.api.userclasspath"/>
+        <path refid="modules-javax.servlet.api.userclasspath"/>
+        <path refid="modules-javax.ws.rs.api.userclasspath"/>
+        <path refid="modules-org.apache.commons.beanutils.userclasspath"/>
+        <path refid="modules-org.apache.commons.collections.userclasspath"/>
+        <path refid="modules-org.apache.commons.io.userclasspath"/>
+        <path refid="modules-org.apache.commons.lang.userclasspath"/>
+        <path refid="modules-javax.persistence.api.userclasspath"/>
+        <path refid="modules-javax.transaction.api.userclasspath"/>
+        <path refid="modules-org.apache.log4j.userclasspath"/>
+        <path refid="modules-javax.enterprise.api.userclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="build/classes"/>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="build/classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="subsystem.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects">
+        <ant antfile="build.xml" dir="${wtfbase.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${wtfbase.location}" inheritAll="false" target="build">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${wtfbaseEJB.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${wtfbaseEJB.location}" inheritAll="false" target="build">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${wtfdocui.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${wtfdocui.location}" inheritAll="false" target="build">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${wtfdocuiEJB.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${wtfdocuiEJB.location}" inheritAll="false" target="build">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+</project>
